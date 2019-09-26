@@ -3,7 +3,7 @@
 #include<string.h>
 #define MAX_STACK_SIZE 80
 typedef struct{
-		char a[MAX_STACK_SIZE][MAX_STACK_SIZE];
+		char **a;
 		int top;
 
 }STACK;
@@ -16,6 +16,10 @@ int isStackFull(STACK S){
 }
 void stackInit(STACK *S){
 	S->top=-1;
+	S->a=(char**)calloc(80,sizeof(char*));
+	for(int i=0;i<80;i++){
+		S->a[i]=(char*)malloc(80*sizeof(char));
+	}
 }
 int isStackEmpty(STACK S){
 	if(S.top==-1){
